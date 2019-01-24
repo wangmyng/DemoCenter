@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wangmyng.democenter">
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    <application
+        android:name="com.wangmyng.common.CenterApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_reindeer"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon_reindeer"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".biometric.BiometricActivity"
+            android:banner="@mipmap/lives_affection_blur_couple"
+            android:icon="@mipmap/icon_fox"
+            android:label="@string/fingerprint_recognize"
+            android:launchMode="singleTop" />
+
+        <activity
+            android:name=".webview.WebViewActivity"
+            android:banner="@mipmap/lives_adults_city"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:icon="@mipmap/icon_flamingo"
+            android:label="@string/title_activity_web_view"
+            android:launchMode="singleTop"
+            android:theme="@style/FullscreenTheme" />
+    </application>
+
+</manifest>

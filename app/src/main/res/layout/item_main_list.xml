@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_pure"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_10"
+    android:layout_margin="@dimen/h_padding_16dp">
+
+    <ImageView
+        android:id="@+id/iv_content"
+        android:scaleType="centerInside"
+        android:layout_width="wrap_content"
+        android:layout_height="168dp"
+        android:src="@mipmap/icon_whale" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
