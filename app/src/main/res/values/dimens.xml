@@ -4,4 +4,5 @@
     <dimen name="h_padding_16dp">16dp</dimen>
     <dimen name="sp_84">84sp</dimen>
     <dimen name="sp_64">64sp</dimen>
+    <dimen name="sp_32">32sp</dimen>
 </resources>

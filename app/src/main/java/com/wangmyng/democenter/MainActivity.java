@@ -3,16 +3,22 @@ package com.wangmyng.democenter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wangmyng.common.BaseActivity;
 import com.wangmyng.common.arouter.ARouterUtil;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +29,7 @@ import java.util.List;
  */
 public class MainActivity extends BaseActivity {
 
-    private StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+    private LinearLayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
     private MainListAdapter mListAdapter = new MainListAdapter();
     private List<MainListBean> mDataList = new ArrayList<>();
 
@@ -54,8 +60,8 @@ public class MainActivity extends BaseActivity {
                 if (info.icon != 0) {
                     String routePath = info.name.substring(packageInfo.packageName.length());
                     //replaceAll(regex, str) 方法未能使用转义符
-                    for(int i = 0;i< routePath.length();i++) {
-                        if(routePath.contains(".")) {
+                    for (int i = 0; i < routePath.length(); i++) {
+                        if (routePath.contains(".")) {
                             routePath = routePath.replace(".", "/");
                         } else {
                             break;
@@ -66,8 +72,22 @@ public class MainActivity extends BaseActivity {
                     mDataList.add(bean);
                 }
             }
-            mListAdapter.setNewData(mDataList);
         }
+
+        //反射获取所有图片资源，填充首页
+        Resources resources = getResources();
+        String packageName = getPackageName();
+        Field[] fields = R.mipmap.class.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.getName().contains("ic") || field.getName().contains("expression")) {
+                continue;
+            }
+            int id = resources.getIdentifier(field.getName(), "mipmap", packageName);
+            MainListBean bean = new MainListBean("", "", id, id);
+            mDataList.add(bean);
+        }
+
+        mListAdapter.setNewData(mDataList);
 
     }
 
@@ -76,7 +96,9 @@ public class MainActivity extends BaseActivity {
         mListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ARouterUtil.navigation(mDataList.get(position).getRoutePath());
+                if (!TextUtils.isEmpty(mDataList.get(position).getRoutePath())) {
+                    ARouterUtil.navigation(mDataList.get(position).getRoutePath());
+                }
             }
         });
     }
@@ -90,7 +112,7 @@ public class MainActivity extends BaseActivity {
         @Override
         protected void convert(BaseViewHolder helper, MainListBean item) {
             helper.setText(R.id.tv_title, item.getTitle());
-            helper.setImageResource(R.id.iv_content, item.getIconRes());
+            Glide.with(mContext).load(item.getBannerRes()).into((ImageView) helper.getView(R.id.iv_content));
         }
     }
 

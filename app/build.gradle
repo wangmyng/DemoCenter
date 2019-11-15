@@ -44,5 +44,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
 
+    //4.10会使用androidx的内容，进而导致menifest merge fail
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
     implementation project(':common')
 }
