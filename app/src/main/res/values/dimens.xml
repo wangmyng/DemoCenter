@@ -2,4 +2,6 @@
 <resources>
     <dimen name="padding_12_dp">12dp</dimen>
     <dimen name="h_padding_16dp">16dp</dimen>
+    <dimen name="sp_84">84sp</dimen>
+    <dimen name="sp_64">64sp</dimen>
 </resources>

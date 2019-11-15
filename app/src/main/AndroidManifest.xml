@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".samples.timer.TimerActivity"
+            android:icon="@mipmap/icon_fat_bird" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +41,7 @@
             android:label="@string/title_activity_web_view"
             android:launchMode="singleTop"
             android:theme="@style/FullscreenTheme" />
+
     </application>
 
 </manifest>
