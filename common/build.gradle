@@ -35,4 +35,7 @@ dependencies {
 
     implementation "com.alibaba:arouter-api:${rootProject.ext.arouterApi}"
     annotationProcessor "com.alibaba:arouter-compiler:${rootProject.ext.arouterCompiler}"
+
+    //腾讯Bugly，自动集成SDK，未集成NDK
+    implementation 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
 }
