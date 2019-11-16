@@ -1,5 +1,6 @@
 package com.wangmyng.common.utils;
 
+import android.app.Application;
 import android.content.Context;
 
 /**

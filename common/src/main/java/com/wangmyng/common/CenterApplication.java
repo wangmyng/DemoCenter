@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.wangmyng.common.utils.Utils;
 
 /**
  * @author wangming37
@@ -35,6 +36,8 @@ public class CenterApplication extends Application {
         }
         ARouter.init(this);
         CrashReport.initCrashReport(getContext(), "28679e2c31", isDebug());
+
+        Utils.init(this);
     }
 
     private boolean isDebug() {

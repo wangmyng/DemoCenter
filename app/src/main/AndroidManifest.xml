@@ -24,7 +24,8 @@
             android:banner="@mipmap/lives_activity_beautiful_camera"
             android:icon="@mipmap/icon_fat_bird" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
