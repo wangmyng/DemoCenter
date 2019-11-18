@@ -8,7 +8,7 @@ import com.tencent.bugly.crashreport.CrashReport;
 import com.wangmyng.common.utils.Utils;
 
 /**
- * @author wangming37
+ * @author wangmyng
  * @date 2019/3/3
  *
  * # Application 创建后需要在 manifest 的 Application 标签内用 name 属性指定

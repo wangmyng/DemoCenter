@@ -13,7 +13,7 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 
 /**
- * Author: wangming37
+ * Author: wangmyng
  * Date: 2019/1/17
  */
 @RequiresApi(api = Build.VERSION_CODES.M)

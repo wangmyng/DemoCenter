@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 
 /**
- * @author wangming37
+ * @author wangmyng
  * @date 2019/3/3
  */
 public class BaseFragment extends Fragment {

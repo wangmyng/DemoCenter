@@ -5,4 +5,11 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white_pure">#fff</color>
     <color name="black_pure">#000</color>
+    <color name="white_10_p">#1AFFFFFF</color>
+    <color name="white_32_p">#52FFFFFF</color>
+    <color name="white_64_p">#A3FFFFFF</color>
+    <color name="white_80_p">#CCFFFFFF</color>
+    <color name="black_32_p">#52000000</color>
+    <color name="black_64_p">#A3000000</color>
+    <color name="black_80_p">#CC000000</color>
 </resources>

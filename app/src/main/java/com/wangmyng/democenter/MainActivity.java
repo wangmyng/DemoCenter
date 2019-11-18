@@ -17,6 +17,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.google.gson.Gson;
 import com.wangmyng.common.BaseActivity;
 import com.wangmyng.common.arouter.ARouterUtil;
+import com.wangmyng.common.fragments.WebImageDialogFragment;
 import com.wangmyng.common.network.CallBackUtil;
 import com.wangmyng.common.network.HttpUrls;
 import com.wangmyng.common.network.OkhttpUtil;
@@ -33,7 +34,7 @@ import okhttp3.Call;
 
 
 /**
- * @author wangming37
+ * @author wangmyng
  * @date 2019/3/3
  */
 public class MainActivity extends BaseActivity {
@@ -44,7 +45,11 @@ public class MainActivity extends BaseActivity {
 
     private PexelListAdapter mPexelListAdapter = new PexelListAdapter();
     private List<PexelsResponse.PhotosBean> mPexelBeanList = new ArrayList<>();
-    private StaggeredGridLayoutManager mPexelsLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+    private StaggeredGridLayoutManager mPexelsLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+
+    private final String PEXELS_AUTH_HEADER = "563492ad6f91700001000001340cbf6bad2846819301256f79e3fcde";
+    private int mPexelsPageNo = 1;
+    private int mPexelsPerPage = 30;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +110,10 @@ public class MainActivity extends BaseActivity {
      */
     private void getPexels() {
         Map<String, String> params = new HashMap<>();
-        params.put("per_page", "60");
-        params.put("page", "1");
+        params.put("per_page", String.valueOf(mPexelsPerPage));
+        params.put("page", String.valueOf(mPexelsPageNo));
         Map<String, String> header = new HashMap<>();
-        header.put("Authorization", "563492ad6f91700001000001340cbf6bad2846819301256f79e3fcde");
+        header.put("Authorization", PEXELS_AUTH_HEADER);
         OkhttpUtil.okHttpGet(HttpUrls.PEXELS_CURATED, params, header, new CallBackUtil.CallBackString() {
             @Override
             public void onFailure(Call call, Exception e) {
@@ -138,6 +143,12 @@ public class MainActivity extends BaseActivity {
                 ARouterUtil.navigation(mSampleBeanList.get(position).getRoutePath());
             }
         });
+        mPexelListAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                WebImageDialogFragment.showWebImage(MainActivity.this, mPexelBeanList.get(position).getSrc().getLarge2x());
+            }
+        });
     }
 
     private class SampleListAdapter extends BaseQuickAdapter<MainListBean, BaseViewHolder> {
@@ -161,8 +172,9 @@ public class MainActivity extends BaseActivity {
 
         @Override
         protected void convert(BaseViewHolder helper, PexelsResponse.PhotosBean bean) {
-            helper.setText(R.id.tv_title, "by: " + bean.getPhotographer());
+            helper.getView(R.id.tv_title).setVisibility(View.GONE);
             Glide.with(mContext).load(bean.getSrc().getLarge()).into((ImageView) helper.getView(R.id.iv_content));
+            helper.addOnClickListener(R.id.iv_content);
         }
     }
 
@@ -171,10 +183,10 @@ public class MainActivity extends BaseActivity {
         super.onConfigurationChanged(newConfig);
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             mSamplesLayoutManager.setSpanCount(2);
-            mPexelsLayoutManager.setSpanCount(3);
+            mPexelsLayoutManager.setSpanCount(4);
         } else {
             mSamplesLayoutManager.setSpanCount(1);
-            mPexelsLayoutManager.setSpanCount(2);
+            mPexelsLayoutManager.setSpanCount(3);
         }
     }
 }

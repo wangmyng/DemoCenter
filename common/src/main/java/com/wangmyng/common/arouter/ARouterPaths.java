@@ -2,7 +2,7 @@ package com.wangmyng.common.arouter;
 
 
 /**
- * @author wangming37
+ * @author wangmyng
  * @date 2019/3/3
  *
  */

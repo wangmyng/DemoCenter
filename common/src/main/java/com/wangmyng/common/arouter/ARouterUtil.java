@@ -4,7 +4,7 @@ package com.wangmyng.common.arouter;
 import com.alibaba.android.arouter.launcher.ARouter;
 
 /**
- * @author wangming37
+ * @author wangmyng
  * @date 2019/3/3
  *
  */

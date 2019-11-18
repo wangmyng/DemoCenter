@@ -13,7 +13,7 @@ import com.wangmyng.common.arouter.ARouterPaths;
 import com.wangmyng.democenter.R;
 
 /**
- * @author wangming37
+ * @author wangmyng
  * @date 2019/11/15
  *
  * 一个简单地计时器，通过Handler延时1秒的消息循环完成数字递增

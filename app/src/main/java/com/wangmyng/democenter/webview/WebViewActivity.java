@@ -8,7 +8,7 @@ import com.wangmyng.democenter.R;
 import com.wangmyng.common.arouter.ARouterPaths;
 
 /**
- * @author wangming37
+ * @author wangmyng
  * @date 2019/3/3
  *
  */

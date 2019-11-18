@@ -5,4 +5,6 @@
     <dimen name="sp_84">84sp</dimen>
     <dimen name="sp_64">64sp</dimen>
     <dimen name="sp_32">32sp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_18">18dp</dimen>
 </resources>
