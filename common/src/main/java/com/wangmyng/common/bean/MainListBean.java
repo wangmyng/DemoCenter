@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.bean;
+package com.wangmyng.common.bean;
 
 public class MainListBean {
 

@@ -7,10 +7,38 @@
 
     <ImageView
         android:id="@+id/iv_content"
-        android:scaleType="fitCenter"
-        android:background="@null"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@null"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:id="@+id/layout_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_18"
+        android:background="@color/black_64_p"
+        android:padding="@dimen/dp_8"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Photo by: "
+            android:textColor="@color/white_80_p"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_80_p"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
 
 </RelativeLayout>

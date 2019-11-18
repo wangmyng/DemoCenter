@@ -22,8 +22,8 @@ import com.wangmyng.common.network.CallBackUtil;
 import com.wangmyng.common.network.HttpUrls;
 import com.wangmyng.common.network.OkhttpUtil;
 import com.wangmyng.common.utils.SizeUtils;
-import com.wangmyng.democenter.bean.MainListBean;
-import com.wangmyng.democenter.bean.PexelsResponse;
+import com.wangmyng.common.bean.MainListBean;
+import com.wangmyng.common.bean.PexelsResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -146,7 +146,7 @@ public class MainActivity extends BaseActivity {
         mPexelListAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                WebImageDialogFragment.showWebImage(MainActivity.this, mPexelBeanList.get(position).getSrc().getLarge2x());
+                WebImageDialogFragment.showPhotoDetail(MainActivity.this, mPexelBeanList.get(position));
             }
         });
     }

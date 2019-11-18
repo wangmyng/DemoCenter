@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.bean;
+package com.wangmyng.common.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
