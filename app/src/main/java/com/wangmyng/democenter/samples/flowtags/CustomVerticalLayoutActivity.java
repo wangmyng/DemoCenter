@@ -1,6 +1,9 @@
 package com.wangmyng.democenter.samples.flowtags;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wangmyng.common.BaseActivity;
@@ -14,8 +17,10 @@ import com.wangmyng.democenter.R;
  * 自定义ViewGroup创建流式标签布局
  */
 @Route (path = ARouterPaths.FLOW_TAGS_ACTIVITY)
-public class CustomVerticalLayoutActivity extends BaseActivity {
+public class CustomVerticalLayoutActivity extends BaseActivity implements View.OnClickListener {
 
+    private Button mBtnEnd, mBtnStart, mBtnCenter;
+    private VerticalLayout mVerticalLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,10 @@ public class CustomVerticalLayoutActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mVerticalLayout = findViewById(R.id.vertical_layout);
+        mBtnStart = findViewById(R.id.btn_start);
+        mBtnEnd = findViewById(R.id.btn_end);
+        mBtnCenter = findViewById(R.id.btn_center);
     }
 
     @Override
@@ -34,6 +43,23 @@ public class CustomVerticalLayoutActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+        mBtnStart.setOnClickListener(this);
+        mBtnEnd.setOnClickListener(this);
+        mBtnCenter.setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_start:
+                mVerticalLayout.setGravity(Gravity.START);
+                break;
+            case R.id.btn_end:
+                mVerticalLayout.setGravity(Gravity.END);
+                break;
+            case R.id.btn_center:
+                mVerticalLayout.setGravity(Gravity.CENTER_HORIZONTAL);
+                break;
+        }
     }
 }

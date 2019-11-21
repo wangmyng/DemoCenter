@@ -2,8 +2,10 @@ package com.wangmyng.democenter.samples.flowtags;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 class VerticalLayout extends ViewGroup {
 
@@ -27,8 +29,10 @@ class VerticalLayout extends ViewGroup {
 
     private int mGravity = 0;
 
-    private void setGravity(int gravity) {
-
+    public void setGravity(int gravity) {
+        if (gravity == mGravity) return;
+        mGravity = gravity;
+        requestLayout();
     }
 
     @Override
@@ -87,27 +91,56 @@ class VerticalLayout extends ViewGroup {
         }
 
         //完成设置布局的宽高值
-        setMeasuredDimension(
-                measuredWidth + getPaddingStart() + getPaddingEnd(),
-                measuredHeight + getPaddingTop() + getPaddingBottom());
+        setMeasuredDimension(measuredWidth, measuredHeight);
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int curL = l + getPaddingStart();
-        int curT = t + getPaddingTop();
-        int curR = 0;
-        int curB = 0;
-        for (int i = 0; i < getChildCount(); i++) {
-            View child = getChildAt(i);
-            MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
-            curL += lp.leftMargin;
-            curR = curL + child.getMeasuredWidth();
-            curT += lp.topMargin;
-            curB = curT + child.getMeasuredHeight();
-            child.layout(curL, curT, curR, curB);
-            curL = l + getPaddingStart();
-            curT += child.getMeasuredHeight() + lp.bottomMargin;
+        int defaultL = l + getPaddingLeft();
+        int defaultT = t + getPaddingTop();
+        int defaultR = r - getPaddingRight();
+        int defaultB = b - getPaddingBottom();
+        int curL = defaultL, curR = defaultR, curT = defaultT, curB = defaultB;
+        MarginLayoutParams lp;
+        switch (mGravity) {
+            case Gravity.END:
+                for (int i = 0; i < getChildCount(); i++) {
+                    View child = getChildAt(i);
+                    lp = (MarginLayoutParams) child.getLayoutParams();
+                    curR = defaultR - lp.rightMargin;
+                    curL = curR - child.getMeasuredWidth();
+                    curT += lp.topMargin;
+                    curB = curT + child.getMeasuredHeight();
+                    child.layout(curL, curT, curR, curB);
+                    curT += child.getMeasuredHeight() + lp.bottomMargin;
+                }
+                break;
+            case Gravity.CENTER_HORIZONTAL:
+                int hCenterX = (l + r) / 2;
+                for (int i = 0; i < getChildCount(); i++) {
+                    View child = getChildAt(i);
+                    lp = (MarginLayoutParams) child.getLayoutParams();
+                    curL = hCenterX - child.getMeasuredWidth()/2;
+                    curT += lp.topMargin;
+                    curR = hCenterX + child.getMeasuredWidth()/2;
+                    curB = curT + child.getMeasuredHeight();
+                    child.layout(curL, curT, curR, curB);
+                    curT += child.getMeasuredHeight() + lp.bottomMargin;
+                }
+                break;
+            default:
+                for (int i = 0; i < getChildCount(); i++) {
+                    View child = getChildAt(i);
+                    lp = (MarginLayoutParams) child.getLayoutParams();
+                    curL += lp.leftMargin;
+                    curR = curL + child.getMeasuredWidth();
+                    curT += lp.topMargin;
+                    curB = curT + child.getMeasuredHeight();
+                    child.layout(curL, curT, curR, curB);
+                    curL = l + getPaddingStart();
+                    curT += child.getMeasuredHeight() + lp.bottomMargin;
+                }
+                break;
         }
     }
 

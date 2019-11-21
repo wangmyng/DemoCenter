@@ -9,6 +9,7 @@
     <color name="white_32_p">#52FFFFFF</color>
     <color name="white_64_p">#A3FFFFFF</color>
     <color name="white_80_p">#CCFFFFFF</color>
+    <color name="black_12_p">#1F000000</color>
     <color name="black_32_p">#52000000</color>
     <color name="black_64_p">#A3000000</color>
     <color name="black_80_p">#CC000000</color>

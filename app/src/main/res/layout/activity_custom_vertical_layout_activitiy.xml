@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/padding_12_dp"
     tools:context=".samples.flowtags.CustomVerticalLayoutActivity">
 
@@ -26,7 +27,7 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/btn_center"
+            android:id="@+id/btn_start"
             style="@style/Theme.Design.Light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
             android:textSize="@dimen/sp_14" />
 
         <Button
-            android:id="@+id/btn_start"
+            android:id="@+id/btn_center"
             style="@style/Theme.Design.Light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,79 +63,23 @@
             android:textSize="@dimen/sp_14" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_hint_2"
-        style="@style/Theme.Design.Light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll_gravity"
-        android:layout_marginTop="@dimen/dp_12"
-        android:gravity="center"
-        android:padding="@dimen/dp_12"
-        android:text="设置布局中子 View 的 layout_gravity :"
-        android:textSize="@dimen/sp_14" />
-
-    <LinearLayout
-        android:id="@+id/ll_child_gravity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_hint_2"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btn_child_center"
-            style="@style/Theme.Design.Light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_12"
-            android:background="@color/white_pure"
-            android:gravity="center"
-            android:padding="@dimen/dp_12"
-            android:text="start"
-            android:textSize="@dimen/sp_14" />
-
-        <Button
-            android:id="@+id/btn_child_start"
-            style="@style/Theme.Design.Light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_12"
-            android:background="@color/white_pure"
-            android:gravity="center"
-            android:padding="@dimen/dp_12"
-            android:text="center"
-            android:textSize="@dimen/sp_14" />
-
-        <Button
-            android:id="@+id/btn_child_end"
-            style="@style/Theme.Design.Light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_12"
-            android:background="@color/white_pure"
-            android:gravity="center"
-            android:padding="@dimen/dp_12"
-            android:text="end"
-            android:textSize="@dimen/sp_14" />
-    </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/ll_child_gravity"
-        android:layout_marginTop="@dimen/dp_12">
+        android:layout_height="match_parent">
 
         <com.wangmyng.democenter.samples.flowtags.VerticalLayout
-            android:id="@+id/tags_layout"
+            android:id="@+id/vertical_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black_32_p"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_child_gravity"
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="@color/black_12_p"
             android:padding="@dimen/dp_12">
 
             <Button
                 style="@style/Theme.Design.Light"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginBottom="@dimen/dp_12"
                 android:background="@color/white_pure"
@@ -146,7 +91,7 @@
             <Button
                 style="@style/Theme.Design.Light"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginBottom="@dimen/dp_12"
                 android:background="@color/white_pure"
@@ -158,7 +103,7 @@
             <Button
                 style="@style/Theme.Design.Light"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginBottom="@dimen/dp_12"
                 android:background="@color/white_pure"
@@ -170,7 +115,7 @@
             <Button
                 style="@style/Theme.Design.Light"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginBottom="@dimen/dp_12"
                 android:background="@color/white_pure"
@@ -182,7 +127,7 @@
             <Button
                 style="@style/Theme.Design.Light"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginBottom="@dimen/dp_12"
                 android:background="@color/white_pure"
@@ -194,7 +139,91 @@
             <Button
                 style="@style/Theme.Design.Light"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/white_pure"
+                android:gravity="center"
+                android:padding="@dimen/dp_12"
+                android:text="Hymn For The Weekend"
+                android:textSize="@dimen/sp_14" />
+
+            <Button
+                style="@style/Theme.Design.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/white_pure"
+                android:gravity="center"
+                android:padding="@dimen/dp_12"
+                android:text="Hymn For The Weekend"
+                android:textSize="@dimen/sp_14" />
+
+            <Button
+                style="@style/Theme.Design.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/white_pure"
+                android:gravity="center"
+                android:padding="@dimen/dp_12"
+                android:text="Hymn For The Weekend"
+                android:textSize="@dimen/sp_14" />
+
+            <Button
+                style="@style/Theme.Design.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/white_pure"
+                android:gravity="center"
+                android:padding="@dimen/dp_12"
+                android:text="Hymn For The Weekend"
+                android:textSize="@dimen/sp_14" />
+
+            <Button
+                style="@style/Theme.Design.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/white_pure"
+                android:gravity="center"
+                android:padding="@dimen/dp_12"
+                android:text="Hymn For The Weekend"
+                android:textSize="@dimen/sp_14" />
+
+            <Button
+                style="@style/Theme.Design.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/white_pure"
+                android:gravity="center"
+                android:padding="@dimen/dp_12"
+                android:text="Hymn For The Weekend"
+                android:textSize="@dimen/sp_14" />
+
+            <Button
+                style="@style/Theme.Design.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/white_pure"
+                android:gravity="center"
+                android:padding="@dimen/dp_12"
+                android:text="Hymn For The Weekend"
+                android:textSize="@dimen/sp_14" />
+
+            <Button
+                style="@style/Theme.Design.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginBottom="@dimen/dp_12"
                 android:background="@color/white_pure"
@@ -204,4 +233,4 @@
                 android:textSize="@dimen/sp_14" />
         </com.wangmyng.democenter.samples.flowtags.VerticalLayout>
     </ScrollView>
-</RelativeLayout>
+</LinearLayout>
