@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.samples.flowtags;
+package com.wangmyng.democenter.samples.customs;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -16,8 +16,8 @@ import com.wangmyng.democenter.R;
  *
  * 自定义ViewGroup创建流式标签布局
  */
-@Route (path = ARouterPaths.FLOW_TAGS_ACTIVITY)
-public class CustomVerticalLayoutActivity extends BaseActivity implements View.OnClickListener {
+@Route (path = ARouterPaths.VERTICAL_LAYOUT_ACTIVITY)
+public class VerticalLayoutActivity extends BaseActivity implements View.OnClickListener {
 
     private Button mBtnEnd, mBtnStart, mBtnCenter;
     private VerticalLayout mVerticalLayout;
@@ -25,7 +25,7 @@ public class CustomVerticalLayoutActivity extends BaseActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_vertical_layout_activitiy);
+        setContentView(R.layout.activity_vertical_layout_activitiy);
     }
 
     @Override

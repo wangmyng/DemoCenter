@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/padding_12_dp"
-    tools:context=".samples.flowtags.CustomVerticalLayoutActivity">
+    tools:context=".samples.customs.VerticalLayoutActivity">
 
     <TextView
         android:id="@+id/tv_hint_1"
@@ -68,7 +68,7 @@
         android:layout_marginTop="@dimen/dp_12"
         android:layout_height="match_parent">
 
-        <com.wangmyng.democenter.samples.flowtags.VerticalLayout
+        <com.wangmyng.democenter.samples.customs.VerticalLayout
             android:id="@+id/vertical_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -196,6 +196,6 @@
                 android:textSize="@dimen/sp_14" />
 
 
-        </com.wangmyng.democenter.samples.flowtags.VerticalLayout>
+        </com.wangmyng.democenter.samples.customs.VerticalLayout>
     </ScrollView>
 </LinearLayout>

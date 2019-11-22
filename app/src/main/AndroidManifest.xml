@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".samples.flowtags.CustomVerticalLayoutActivity"
+            android:name=".samples.customs.VerticalLayoutActivity"
             android:banner="@mipmap/lives_boy_children_couple"
             android:icon="@mipmap/icon_fat_bird" />
         <activity

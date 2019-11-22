@@ -1,11 +1,10 @@
-package com.wangmyng.democenter.samples.flowtags;
+package com.wangmyng.democenter.samples.customs;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 class VerticalLayout extends ViewGroup {
 
@@ -73,17 +72,23 @@ class VerticalLayout extends ViewGroup {
         for (int i = 0; i < getChildCount(); i++) {
             View childView = getChildAt(i);
             MarginLayoutParams p = (MarginLayoutParams) childView.getLayoutParams();
+            // TODO: 2019/11/22  下面的measureChildWithMargin的理解和使用方法错误
+//            measureChildWithMargins(
+//                    childView, widthMeasureSpec, 0, heightMeasureSpec, 0);
+//            int totalWidth = childView.getMeasuredWidth();
+//            int totalHeight = childView.getMeasuredHeight();
+            measureChild(childView, widthMeasureSpec, heightMeasureSpec);
             int totalWidth = childView.getMeasuredWidth() + p.leftMargin + p.rightMargin;
             int totalHeight = childView.getMeasuredHeight() + p.topMargin + p.bottomMargin;
-            measureChildWithMargins(
-                    childView, widthMeasureSpec, totalWidth, heightMeasureSpec, totalHeight);
             if (!skipMeasureWidth)
                 measuredWidth = Math.max(measuredWidth, totalWidth);
             if (!skipMeasureHeight)
                 measuredHeight += totalHeight;
         }
 
+        if(!skipMeasureWidth)
         measuredWidth += getPaddingStart() + getPaddingEnd();
+        if(!skipMeasureHeight)
         measuredHeight += getPaddingTop() + getPaddingBottom();
 
         //完成设置布局的宽高值
@@ -106,7 +111,7 @@ class VerticalLayout extends ViewGroup {
             lp = (MarginLayoutParams) child.getLayoutParams();
             switch (mGravity) {
                 case Gravity.END:
-                    curR = r - l - getPaddingEnd() - lp.rightMargin;
+                    curR = r - getPaddingEnd() - lp.rightMargin;
                     curL = curR - child.getMeasuredWidth();
                     curT += lp.topMargin;
                     curB = curT + child.getMeasuredHeight();
@@ -114,7 +119,7 @@ class VerticalLayout extends ViewGroup {
                     curT += child.getMeasuredHeight() + lp.bottomMargin;
                     break;
                 case Gravity.CENTER_HORIZONTAL:
-                    int hCenterX = (l + r) / 2;
+                    int hCenterX = r / 2;
                     curL = hCenterX - child.getMeasuredWidth() / 2;
                     curT += lp.topMargin;
                     curR = hCenterX + child.getMeasuredWidth() / 2;

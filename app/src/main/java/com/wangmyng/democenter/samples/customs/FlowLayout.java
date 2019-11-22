@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.samples.flowtags;
+package com.wangmyng.democenter.samples.customs;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
