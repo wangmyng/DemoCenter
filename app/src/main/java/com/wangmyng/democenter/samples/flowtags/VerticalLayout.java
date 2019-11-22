@@ -21,12 +21,6 @@ class VerticalLayout extends ViewGroup {
         super(context, attrs, defStyleAttr);
     }
 
-    private int mChildrenLayoutGravity = 0;
-
-    public void setChildrenLayoutGravity(int gravity) {
-
-    }
-
     private int mGravity = 0;
 
     public void setGravity(int gravity) {
@@ -83,64 +77,60 @@ class VerticalLayout extends ViewGroup {
             int totalHeight = childView.getMeasuredHeight() + p.topMargin + p.bottomMargin;
             measureChildWithMargins(
                     childView, widthMeasureSpec, totalWidth, heightMeasureSpec, totalHeight);
-            //先用简单纵向布局进行测试
             if (!skipMeasureWidth)
                 measuredWidth = Math.max(measuredWidth, totalWidth);
             if (!skipMeasureHeight)
                 measuredHeight += totalHeight;
         }
 
+        measuredWidth += getPaddingStart() + getPaddingEnd();
+        measuredHeight += getPaddingTop() + getPaddingBottom();
+
         //完成设置布局的宽高值
         setMeasuredDimension(measuredWidth, measuredHeight);
     }
 
+    /**
+     * 注意：参数中的l,t,r,b表示此控件与它的父控件的相对距离，而不是单纯的坐标
+     * 同样的，在此控件调用child的layout方法时，传入的参数也需要是与此控件的相对距离
+     * 相对距离是指以父控件的左上顶点为原点，自身的左上右下到父控件的左边界（y轴）和上边界（x轴）的距离
+     */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int defaultL = l + getPaddingLeft();
-        int defaultT = t + getPaddingTop();
-        int defaultR = r - getPaddingRight();
-        int defaultB = b - getPaddingBottom();
-        int curL = defaultL, curR = defaultR, curT = defaultT, curB = defaultB;
+        int curL, curT, curR, curB;
+        curT = getPaddingTop();
         MarginLayoutParams lp;
-        switch (mGravity) {
-            case Gravity.END:
-                for (int i = 0; i < getChildCount(); i++) {
-                    View child = getChildAt(i);
-                    lp = (MarginLayoutParams) child.getLayoutParams();
-                    curR = defaultR - lp.rightMargin;
+        View child;
+        for (int i = 0; i < getChildCount(); i++) {
+            child = getChildAt(i);
+            lp = (MarginLayoutParams) child.getLayoutParams();
+            switch (mGravity) {
+                case Gravity.END:
+                    curR = r - l - getPaddingEnd() - lp.rightMargin;
                     curL = curR - child.getMeasuredWidth();
                     curT += lp.topMargin;
                     curB = curT + child.getMeasuredHeight();
                     child.layout(curL, curT, curR, curB);
                     curT += child.getMeasuredHeight() + lp.bottomMargin;
-                }
-                break;
-            case Gravity.CENTER_HORIZONTAL:
-                int hCenterX = (l + r) / 2;
-                for (int i = 0; i < getChildCount(); i++) {
-                    View child = getChildAt(i);
-                    lp = (MarginLayoutParams) child.getLayoutParams();
-                    curL = hCenterX - child.getMeasuredWidth()/2;
+                    break;
+                case Gravity.CENTER_HORIZONTAL:
+                    int hCenterX = (l + r) / 2;
+                    curL = hCenterX - child.getMeasuredWidth() / 2;
                     curT += lp.topMargin;
-                    curR = hCenterX + child.getMeasuredWidth()/2;
+                    curR = hCenterX + child.getMeasuredWidth() / 2;
                     curB = curT + child.getMeasuredHeight();
                     child.layout(curL, curT, curR, curB);
                     curT += child.getMeasuredHeight() + lp.bottomMargin;
-                }
-                break;
-            default:
-                for (int i = 0; i < getChildCount(); i++) {
-                    View child = getChildAt(i);
-                    lp = (MarginLayoutParams) child.getLayoutParams();
-                    curL += lp.leftMargin;
+                    break;
+                default:
+                    curL = getPaddingStart() + lp.leftMargin;
                     curR = curL + child.getMeasuredWidth();
                     curT += lp.topMargin;
                     curB = curT + child.getMeasuredHeight();
                     child.layout(curL, curT, curR, curB);
-                    curL = l + getPaddingStart();
                     curT += child.getMeasuredHeight() + lp.bottomMargin;
-                }
-                break;
+                    break;
+            }
         }
     }
 
