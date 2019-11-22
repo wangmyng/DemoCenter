@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_12_dp"
+    tools:context=".samples.customs.FlowTagsLayoutActivity">
+
+    <TextView
+        android:id="@+id/tv_hint_1"
+        style="@style/Theme.Design.Light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:gravity="center"
+        android:padding="@dimen/dp_12"
+        android:text="为布局添加不同长度的子控件 :"
+        android:textSize="@dimen/sp_14" />
+
+    <LinearLayout
+        android:id="@+id/ll_gravity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_short"
+            style="@style/Theme.Design.Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_12"
+            android:background="@color/white_pure"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:text="短短的"
+            android:textSize="@dimen/sp_14" />
+
+        <Button
+            android:id="@+id/btn_medium"
+            style="@style/Theme.Design.Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_12"
+            android:background="@color/white_pure"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:text="一般般的"
+            android:textSize="@dimen/sp_14" />
+
+        <Button
+            android:id="@+id/btn_long"
+            style="@style/Theme.Design.Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_12"
+            android:background="@color/white_pure"
+            android:gravity="center"
+            android:padding="@dimen/dp_12"
+            android:text="长长的"
+            android:textSize="@dimen/sp_14" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_12">
+
+        <com.wangmyng.democenter.samples.customs.FlowTagsLayout
+            android:id="@+id/flow_tags_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_12_p"
+            android:padding="@dimen/dp_12">
+
+
+        </com.wangmyng.democenter.samples.customs.FlowTagsLayout>
+    </ScrollView>
+</LinearLayout>

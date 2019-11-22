@@ -6,4 +6,9 @@
         <item name="android:windowEnterAnimation">@anim/bottom_menu_enter</item>
         <item name="android:windowExitAnimation">@anim/bottom_menu_exit</item>
     </style>
+
+    <!--常用的TextView、Button样式-->
+    <style name="normal_text_view" parent="Theme.AppCompat.Light">
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

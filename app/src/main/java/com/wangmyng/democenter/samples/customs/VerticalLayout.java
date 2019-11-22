@@ -32,38 +32,24 @@ class VerticalLayout extends ViewGroup {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
         int widthMeasureSpecSize = MeasureSpec.getSize(widthMeasureSpec);
-        int widthMeasureSpecMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMeasureSpecSize = MeasureSpec.getSize(heightMeasureSpec);
-        int heightMeasureSpecMode = MeasureSpec.getMode(heightMeasureSpec);
 
         int measuredWidth = 0;
         int measuredHeight = 0;
 
-        //当此ViewGroup布局属性设置为matchParent或具体数值时，不需要在遍历测量子View时进行计算获取了
+        //当matchParent或已设定具体数值时跳过测量
         LayoutParams lp = getLayoutParams();
-        switch (widthMeasureSpecMode) {
-            case MeasureSpec.EXACTLY:
-            case MeasureSpec.AT_MOST:
-                if (lp.width > 0) {
-                    measuredWidth = lp.width;
-                } else if (lp.width == LayoutParams.MATCH_PARENT) {
-                    measuredWidth = widthMeasureSpecSize;
-                }
-                break;
-            case MeasureSpec.UNSPECIFIED:
-                break;
+        if (lp.width == LayoutParams.MATCH_PARENT) {
+            measuredWidth = widthMeasureSpecSize;
         }
-        switch (heightMeasureSpecMode) {
-            case MeasureSpec.EXACTLY:
-            case MeasureSpec.AT_MOST:
-                if (lp.height > 0) {
-                    measuredHeight = lp.height;
-                } else if (lp.height == LayoutParams.MATCH_PARENT) {
-                    measuredHeight = heightMeasureSpecSize;
-                }
-                break;
-            case MeasureSpec.UNSPECIFIED:
-                break;
+        if (lp.width > 0) {
+            measuredWidth = lp.width;
+        }
+        if (lp.height == LayoutParams.MATCH_PARENT) {
+            measuredHeight = heightMeasureSpecSize;
+        }
+        if (lp.height > 0) {
+            measuredHeight = lp.height;
         }
         boolean skipMeasureWidth = measuredWidth != 0;
         boolean skipMeasureHeight = measuredHeight != 0;

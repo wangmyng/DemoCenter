@@ -18,13 +18,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".samples.customs.FlowTagsLayoutActivity"
+            android:banner="@mipmap/lives_adorable_baby_beautiful"
+            android:icon="@mipmap/icon_fat_bird" />
+        <activity
             android:name=".samples.customs.VerticalLayoutActivity"
             android:banner="@mipmap/lives_boy_children_couple"
             android:icon="@mipmap/icon_fat_bird" />
         <activity
             android:name=".samples.timer.TimerActivity"
-            android:banner="@mipmap/lives_activity_beautiful_camera"
+            android:banner="@mipmap/lives_adults_city"
             android:icon="@mipmap/icon_fat_bird" />
+        <activity
+            android:name=".biometric.BiometricActivity"
+            android:banner="@mipmap/lives_affection_blur_couple"
+            android:icon="@mipmap/icon_fox"
+            android:label="@string/fingerprint_recognize"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".webview.WebViewActivity"
+            android:banner="@mipmap/lives_activity_beautiful_camera"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:icon="@mipmap/icon_flamingo"
+            android:label="@string/title_activity_web_view"
+            android:launchMode="singleTop"
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize">
@@ -35,20 +53,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".biometric.BiometricActivity"
-            android:banner="@mipmap/lives_affection_blur_couple"
-            android:icon="@mipmap/icon_fox"
-            android:label="@string/fingerprint_recognize"
-            android:launchMode="singleTop" />
-        <activity
-            android:name=".webview.WebViewActivity"
-            android:banner="@mipmap/lives_adults_city"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:icon="@mipmap/icon_flamingo"
-            android:label="@string/title_activity_web_view"
-            android:launchMode="singleTop"
-            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>
