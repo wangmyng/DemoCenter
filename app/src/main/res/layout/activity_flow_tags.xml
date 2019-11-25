@@ -74,7 +74,6 @@
             android:background="@color/black_12_p"
             android:padding="@dimen/dp_12">
 
-
         </com.wangmyng.democenter.samples.customs.FlowTagsLayout>
     </ScrollView>
 </LinearLayout>

@@ -53,8 +53,10 @@ public class FlowTagsLayout extends ViewGroup {
         MarginLayoutParams mLp;
         for (int i = 0; i < getChildCount(); i++) {
             child = getChildAt(i);
-            measureChild(child, widthMeasureSpec, heightMeasureSpec);
             mLp = (MarginLayoutParams) child.getLayoutParams();
+            measureChild(child,
+                    getChildMeasureSpec(widthMeasureSpec, getPaddingLeft() + getPaddingRight(), mLp.width),
+                    getChildMeasureSpec(heightMeasureSpec, getPaddingTop() + getPaddingBottom(), mLp.height));
             int childNeedWidth = child.getMeasuredWidth() + mLp.leftMargin + mLp.rightMargin;
             int childNeedHeight = child.getMeasuredHeight() + mLp.topMargin + mLp.bottomMargin;
             if (remainingWidth > childNeedWidth) {
