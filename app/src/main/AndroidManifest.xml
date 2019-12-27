@@ -17,6 +17,9 @@
         android:roundIcon="@mipmap/icon_reindeer"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".samples.customs.CustomTestActivity"
+            android:banner="@mipmap/lives_boyfriend_cold_couple"
+            android:icon="@mipmap/icon_fat_bird"/>
         <activity
             android:name=".samples.customs.FlowTagsLayoutActivity"
             android:banner="@mipmap/lives_adorable_baby_beautiful"

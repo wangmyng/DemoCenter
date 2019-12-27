@@ -12,4 +12,5 @@ public class ARouterPaths {
     public static final String TIMER_ACTIVITY = "/samples/timer/TimerActivity";
     public static final String VERTICAL_LAYOUT_ACTIVITY = "/samples/customs/VerticalLayoutActivity";
     public static final String FLOW_TAGS_ACTIVITY = "/samples/customs/FlowTagsLayoutActivity";
+    public static final String CUSTOM_TEST_ACTIVITY = "/samples/customs/CustomTestActivity";
 }
