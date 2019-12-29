@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,7 +25,7 @@ import com.wangmyng.common.bean.PexelsResponse;
  * @author wangmyng
  * @date 2019/11/18
  */
-public class WebImageDialogFragment extends BaseDialogFragment implements View.OnClickListener {
+public class WebImageDialogFragment extends PexelsDetailFragment implements View.OnClickListener {
 
 
     private static WebImageDialogFragment mInstance;
@@ -40,7 +39,7 @@ public class WebImageDialogFragment extends BaseDialogFragment implements View.O
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.fragment_base_dialog, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_pexels_detail, container, false);
         return mRootView;
     }
 
