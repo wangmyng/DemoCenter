@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/padding_12_dp"
-    tools:context=".samples.customs.VerticalLayoutActivity">
+    tools:context=".samples.VerticalLayoutActivity">
 
     <TextView
         android:id="@+id/tv_hint_1"

@@ -6,7 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
-class VerticalLayout extends ViewGroup {
+public class VerticalLayout extends ViewGroup {
 
     public VerticalLayout(Context context) {
         super(context);

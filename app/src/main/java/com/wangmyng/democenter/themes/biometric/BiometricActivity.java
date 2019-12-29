@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.biometric;
+package com.wangmyng.democenter.themes.biometric;
 
 import android.support.annotation.NonNull;
 import android.os.Bundle;

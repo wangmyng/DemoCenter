@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.webview;
+package com.wangmyng.democenter.themes.webview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

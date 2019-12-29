@@ -17,29 +17,30 @@
         android:roundIcon="@mipmap/icon_reindeer"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".samples.customs.CustomTestActivity"
-            android:banner="@mipmap/lives_boyfriend_cold_couple"
-            android:icon="@mipmap/icon_fat_bird"/>
         <activity
-            android:name=".samples.customs.FlowTagsLayoutActivity"
+            android:name=".samples.CustomTestActivity"
+            android:banner="@mipmap/lives_boyfriend_cold_couple"
+            android:icon="@mipmap/icon_fat_bird" />
+        <activity
+            android:name=".samples.FlowTagsLayoutActivity"
             android:banner="@mipmap/lives_adorable_baby_beautiful"
             android:icon="@mipmap/icon_fat_bird" />
         <activity
-            android:name=".samples.customs.VerticalLayoutActivity"
+            android:name=".samples.VerticalLayoutActivity"
             android:banner="@mipmap/lives_boy_children_couple"
             android:icon="@mipmap/icon_fat_bird" />
         <activity
-            android:name=".samples.timer.TimerActivity"
+            android:name=".samples.TimerActivity"
             android:banner="@mipmap/lives_adults_city"
             android:icon="@mipmap/icon_fat_bird" />
         <activity
-            android:name=".biometric.BiometricActivity"
+            android:name=".themes.biometric.BiometricActivity"
             android:banner="@mipmap/lives_affection_blur_couple"
             android:icon="@mipmap/icon_fox"
             android:label="@string/fingerprint_recognize"
             android:launchMode="singleTop" />
         <activity
-            android:name=".webview.WebViewActivity"
+            android:name=".themes.webview.WebViewActivity"
             android:banner="@mipmap/lives_activity_beautiful_camera"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:icon="@mipmap/icon_flamingo"

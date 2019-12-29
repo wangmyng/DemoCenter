@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.biometric;
+package com.wangmyng.democenter.themes.biometric;
 
 /*
  * Copyright 2018 The Android Open Source Project

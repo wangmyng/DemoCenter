@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.samples.timer;
+package com.wangmyng.democenter.samples;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

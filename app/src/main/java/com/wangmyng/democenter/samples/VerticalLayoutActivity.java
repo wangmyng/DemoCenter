@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.samples.customs;
+package com.wangmyng.democenter.samples;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wangmyng.common.BaseActivity;
 import com.wangmyng.common.arouter.ARouterPaths;
 import com.wangmyng.democenter.R;
+import com.wangmyng.democenter.samples.customs.VerticalLayout;
 
 /**
  * @author wangming37

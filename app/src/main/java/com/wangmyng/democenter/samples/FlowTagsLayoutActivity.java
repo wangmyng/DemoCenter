@@ -1,4 +1,4 @@
-package com.wangmyng.democenter.samples.customs;
+package com.wangmyng.democenter.samples;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +13,7 @@ import com.wangmyng.common.BaseActivity;
 import com.wangmyng.common.arouter.ARouterPaths;
 import com.wangmyng.common.utils.SizeUtils;
 import com.wangmyng.democenter.R;
+import com.wangmyng.democenter.samples.customs.FlowTagsLayout;
 
 import java.util.Random;
 
