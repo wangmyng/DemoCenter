@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/img_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/bg_rules" />
+
+    <ImageView
+        android:id="@+id/btn_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/img_bg"
+        android:layout_alignEnd="@id/img_bg"
+        android:layout_alignBottom="@id/img_bg"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="4dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/btn_known" />
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/img_bg"
+        android:layout_alignStart="@id/img_bg"
+        android:layout_alignEnd="@id/img_bg"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/btn_open_red_close" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_center"
+        android:layout_alignStart="@id/img_bg"
+        android:layout_alignEnd="@id/img_bg"
+        android:layout_marginEnd="6dp"
+        android:layout_marginStart="6dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbarSize="4dp"
+        android:layout_marginTop="66dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活力值记分规则"
+                android:textColor="#F9F31E"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_content_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingMultiplier="1.2"
+                android:text="泰康的愿景是“让人们更健康、更长寿、更富足”。为此，泰康人寿针对广大客户推出每个季度的“健康养成计划”，手机在手即刻参与。打破时间空间局限，邀您迈开脚步，走向健康；使用先进的健康仪器，更好地管理自己的生活和健康。 \n客户通过参与定期健康活动和各种健康检测，保持运动好习惯，可以累计健康活力值。每个季度累计分值达到相关标准，将享受更多惊喜好礼，让健身变得简单又有趣，享受健康和长寿的生活。"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="参与方式"
+                android:textColor="#F9F31E"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_content_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingMultiplier="1.2"
+                android:text="1、绑定邀请代理人。\n 2、开启记步，每日走路6000步以上，则达到目标。每日达标1次，即可获得10分活力值。 \n 3、参加泰康不断推出的各类健康检测项目。每个季度至少参加一次健康检测，即可获得100分活力值。第一期为新生活广场“体脂秤”测量，还可通过泰生活轻松获取健康报告。 \n 4、每个季度各项活力值进行累加： 季度活力值 = (每季度达标日数之和) * 10 + 检测1*100 + 检测2*100 ... (检测1、检测2等，每个季度只记分1次) \n 5、季度末，活力值清零。下一季，重新开始计分。 \n 6、活力值可以兑换泰康后续推出的相关服务。 \n 7、活动解释权归泰康人寿所有。"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

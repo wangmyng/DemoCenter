@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/bg_get_prize_long" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_center"
+        android:layout_alignStart="@id/img_bg"
+        android:layout_alignEnd="@id/img_bg"
+        android:layout_marginBottom="18dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.4"
+        android:paddingStart="38dp"
+        android:paddingEnd="40dp"
+        android:text="恭喜您成功领取X元京东E卡，卡号卡密已发送至您的奖品，快去使用吧"
+        android:textColor="#F9F31E"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/btn_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/img_bg"
+        android:layout_alignEnd="@id/img_bg"
+        android:layout_alignBottom="@id/img_bg"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="20dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/btn_see_prize" />
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/img_bg"
+        android:layout_alignStart="@id/img_bg"
+        android:layout_alignEnd="@id/img_bg"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/btn_open_red_close" />
+
+</RelativeLayout>
