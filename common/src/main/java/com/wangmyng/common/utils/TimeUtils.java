@@ -1,11 +1,14 @@
 package com.wangmyng.common.utils;
 
 import android.annotation.SuppressLint;
+import android.text.TextUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -182,10 +185,66 @@ public class TimeUtils {
     public static final String DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
     /**
+     * 获取指定月份的天数
+     */
+    public static int getMonthDaysCount(int year, int month) {
+        Calendar time = Calendar.getInstance();
+        time.clear();
+        time.set(Calendar.YEAR, year);
+        time.set(Calendar.MONTH, month - 1);//Calendar对象默认一月为0
+        return time.getActualMaximum(Calendar.DAY_OF_MONTH);//本月份的天数
+    }
+
+    /**
+     * 获取指定月份的天数
+     *
+     * @date 格式为yyyy-MM-dd HH:mm:ss
+     */
+    public static int getMonthDaysCount(String date) {
+        int year = Integer.valueOf(date.substring(0, 4));
+        int month = Integer.valueOf(date.substring(4, 6));
+        Calendar time = Calendar.getInstance();
+        time.clear();
+        time.set(Calendar.YEAR, year);
+        time.set(Calendar.MONTH, month - 1);//Calendar对象默认一月为0
+        return time.getActualMaximum(Calendar.DAY_OF_MONTH);//本月份的天数
+    }
+
+    /**
+     * 获取指定月份的日期集合
+     *
+     * @date 格式为yyyy-MM-dd HH:mm:ss
+     */
+    public static List<String> getMonthDays(String date) {
+        List<String> resultList = new ArrayList<>();
+        if (TextUtils.isEmpty(date)) {
+            return resultList;
+        }
+        int year = Integer.valueOf(date.substring(0, 4));
+        int month = Integer.valueOf(date.substring(4, 6));
+        Calendar time = Calendar.getInstance();
+        time.clear();
+        time.set(Calendar.YEAR, year);
+        time.set(Calendar.MONTH, month - 1);//Calendar对象默认一月为0
+        int days = time.getActualMaximum(Calendar.DAY_OF_MONTH);//本月份的天数
+        for (int i = 1; i <= days; i++) {
+            String day = "";
+            if (i < 10) {
+                day = date.substring(0, 6) + "0" + i;
+            } else {
+                day = date.substring(0, 6) + i;
+            }
+            resultList.add(day);
+        }
+        return resultList;
+    }
+
+    /**
      * 将时间戳转为时间字符串
      * <p>格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param millis 毫秒时间戳
+     *
      * @return 时间字符串
      */
     public static String millis2String(long millis) {
@@ -198,6 +257,7 @@ public class TimeUtils {
      *
      * @param millis  毫秒时间戳
      * @param pattern 时间格式
+     *
      * @return 时间字符串
      */
     public static String millis2String(long millis, String pattern) {
@@ -209,6 +269,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return 毫秒时间戳
      */
     public static long string2Millis(String time) {
@@ -221,6 +282,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return 毫秒时间戳
      */
     public static long string2Millis(String time, String pattern) {
@@ -237,6 +299,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return Date类型
      */
     public static Date string2Date(String time) {
@@ -249,6 +312,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return Date类型
      */
     public static Date string2Date(String time, String pattern) {
@@ -260,6 +324,7 @@ public class TimeUtils {
      * <p>格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param date Date类型时间
+     *
      * @return 时间字符串
      */
     public static String date2String(Date date) {
@@ -272,6 +337,7 @@ public class TimeUtils {
      *
      * @param date    Date类型时间
      * @param pattern 时间格式
+     *
      * @return 时间字符串
      */
     public static String date2String(Date date, String pattern) {
@@ -282,6 +348,7 @@ public class TimeUtils {
      * 将Date类型转为时间戳
      *
      * @param date Date类型时间
+     *
      * @return 毫秒时间戳
      */
     public static long date2Millis(Date date) {
@@ -292,6 +359,7 @@ public class TimeUtils {
      * 将时间戳转为Date类型
      *
      * @param millis 毫秒时间戳
+     *
      * @return Date类型时间
      */
     public static Date millis2Date(long millis) {
@@ -312,6 +380,7 @@ public class TimeUtils {
      *              <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
      *              <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
      *              </ul>
+     *
      * @return unit时间戳
      */
     public static long getTimeSpan(String time0, String time1, ConstUtils.TimeUnit unit) {
@@ -333,6 +402,7 @@ public class TimeUtils {
      *                <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
      *                </ul>
      * @param pattern 时间格式
+     *
      * @return unit时间戳
      */
     public static long getTimeSpan(String time0, String time1, ConstUtils.TimeUnit unit, String pattern) {
@@ -352,6 +422,7 @@ public class TimeUtils {
      *              <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
      *              <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
      *              </ul>
+     *
      * @return unit时间戳
      */
     public static long getTimeSpan(Date date0, Date date1, ConstUtils.TimeUnit unit) {
@@ -371,6 +442,7 @@ public class TimeUtils {
      *                <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
      *                <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
      *                </ul>
+     *
      * @return unit时间戳
      */
     public static long getTimeSpan(long millis0, long millis1, ConstUtils.TimeUnit unit) {
@@ -390,6 +462,7 @@ public class TimeUtils {
      *                  <p>precision = 3，返回天、小时和分钟</p>
      *                  <p>precision = 4，返回天、小时、分钟和秒</p>
      *                  <p>precision &gt;= 5，返回天、小时、分钟、秒和毫秒</p>
+     *
      * @return 合适型两个时间差
      */
     public static String getFitTimeSpan(String time0, String time1, int precision) {
@@ -410,6 +483,7 @@ public class TimeUtils {
      *                  <p>precision = 4，返回天、小时、分钟和秒</p>
      *                  <p>precision &gt;= 5，返回天、小时、分钟、秒和毫秒</p>
      * @param pattern   时间格式
+     *
      * @return 合适型两个时间差
      */
     public static String getFitTimeSpan(String time0, String time1, int precision, String pattern) {
@@ -428,6 +502,7 @@ public class TimeUtils {
      *                  <p>precision = 3，返回天、小时和分钟</p>
      *                  <p>precision = 4，返回天、小时、分钟和秒</p>
      *                  <p>precision &gt;= 5，返回天、小时、分钟、秒和毫秒</p>
+     *
      * @return 合适型两个时间差
      */
     public static String getFitTimeSpan(Date date0, Date date1, int precision) {
@@ -446,6 +521,7 @@ public class TimeUtils {
      *                  <p>precision = 3，返回天、小时和分钟</p>
      *                  <p>precision = 4，返回天、小时、分钟和秒</p>
      *                  <p>precision &gt;= 5，返回天、小时、分钟、秒和毫秒</p>
+     *
      * @return 合适型两个时间差
      */
     public static String getFitTimeSpan(long millis0, long millis1, int precision) {
@@ -476,6 +552,7 @@ public class TimeUtils {
      * <p>格式为pattern</p>
      *
      * @param pattern 时间格式
+     *
      * @return 时间字符串
      */
     public static String getNowTimeString(String pattern) {
@@ -504,6 +581,7 @@ public class TimeUtils {
      *             <li>{@link ConstUtils.TimeUnit#HOUR}:小时</li>
      *             <li>{@link ConstUtils.TimeUnit#DAY }:天</li>
      *             </ul>
+     *
      * @return unit时间戳
      */
     public static long getTimeSpanByNow(String time, ConstUtils.TimeUnit unit) {
@@ -524,6 +602,7 @@ public class TimeUtils {
      *                <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
      *                </ul>
      * @param pattern 时间格式
+     *
      * @return unit时间戳
      */
     public static long getTimeSpanByNow(String time, ConstUtils.TimeUnit unit, String pattern) {
@@ -542,6 +621,7 @@ public class TimeUtils {
      *             <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
      *             <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
      *             </ul>
+     *
      * @return unit时间戳
      */
     public static long getTimeSpanByNow(Date date, ConstUtils.TimeUnit unit) {
@@ -560,6 +640,7 @@ public class TimeUtils {
      *               <li>{@link ConstUtils.TimeUnit#HOUR}: 小时</li>
      *               <li>{@link ConstUtils.TimeUnit#DAY }: 天</li>
      *               </ul>
+     *
      * @return unit时间戳
      */
     public static long getTimeSpanByNow(long millis, ConstUtils.TimeUnit unit) {
@@ -580,6 +661,7 @@ public class TimeUtils {
      *                  <li>precision = 4，返回天、小时、分钟和秒</li>
      *                  <li>precision &gt;= 5，返回天、小时、分钟、秒和毫秒</li>
      *                  </ul>
+     *
      * @return 合适型与当前时间的差
      */
     public static String getFitTimeSpanByNow(String time, int precision) {
@@ -601,6 +683,7 @@ public class TimeUtils {
      *                  <li>precision = 4，返回天、小时、分钟和秒</li>
      *                  <li>precision &gt;= 5，返回天、小时、分钟、秒和毫秒</li>
      *                  </ul>
+     *
      * @return 合适型与当前时间的差
      */
     public static String getFitTimeSpanByNow(String time, int precision, String pattern) {
@@ -620,6 +703,7 @@ public class TimeUtils {
      *                  <li>precision = 4，返回天、小时、分钟和秒</li>
      *                  <li>precision &gt;= 5，返回天、小时、分钟、秒和毫秒</li>
      *                  </ul>
+     *
      * @return 合适型与当前时间的差
      */
     public static String getFitTimeSpanByNow(Date date, int precision) {
@@ -639,6 +723,7 @@ public class TimeUtils {
      *                  <li>precision = 4，返回天、小时、分钟和秒</li>
      *                  <li>precision &gt;= 5，返回天、小时、分钟、秒和毫秒</li>
      *                  </ul>
+     *
      * @return 合适型与当前时间的差
      */
     public static String getFitTimeSpanByNow(long millis, int precision) {
@@ -650,6 +735,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return 友好型与当前时间的差
      * <ul>
      * <li>如果小于1秒钟内，显示刚刚</li>
@@ -671,6 +757,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return 友好型与当前时间的差
      * <ul>
      * <li>如果小于1秒钟内，显示刚刚</li>
@@ -690,6 +777,7 @@ public class TimeUtils {
      * 获取友好型与当前时间的差
      *
      * @param date Date类型时间
+     *
      * @return 友好型与当前时间的差
      * <ul>
      * <li>如果小于1秒钟内，显示刚刚</li>
@@ -709,6 +797,7 @@ public class TimeUtils {
      * 获取友好型与当前时间的差
      *
      * @param millis 毫秒时间戳
+     *
      * @return 友好型与当前时间的差
      * <ul>
      * <li>如果小于1秒钟内，显示刚刚</li>
@@ -720,7 +809,7 @@ public class TimeUtils {
      * <li>时间不合法的情况全部日期和时间信息，如星期六 十月 27 14:21:20 CST 2007</li>
      * </ul>
      */
-    @SuppressLint("DefaultLocale")
+    @SuppressLint ("DefaultLocale")
     public static String getFriendlyTimeSpanByNow(long millis) {
         long now = System.currentTimeMillis();
         long span = now - millis;
@@ -749,6 +838,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return {@code true}: 是<br>{@code false}: 否
      */
     public static boolean isSameDay(String time) {
@@ -761,6 +851,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return {@code true}: 是<br>{@code false}: 否
      */
     public static boolean isSameDay(String time, String pattern) {
@@ -771,6 +862,7 @@ public class TimeUtils {
      * 判断是否同一天
      *
      * @param date Date类型时间
+     *
      * @return {@code true}: 是<br>{@code false}: 否
      */
     public static boolean isSameDay(Date date) {
@@ -781,6 +873,7 @@ public class TimeUtils {
      * 判断是否同一天
      *
      * @param millis 毫秒时间戳
+     *
      * @return {@code true}: 是<br>{@code false}: 否
      */
     public static boolean isSameDay(long millis) {
@@ -793,6 +886,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return {@code true}: 闰年<br>{@code false}: 平年
      */
     public static boolean isLeapYear(String time) {
@@ -805,6 +899,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return {@code true}: 闰年<br>{@code false}: 平年
      */
     public static boolean isLeapYear(String time, String pattern) {
@@ -815,6 +910,7 @@ public class TimeUtils {
      * 判断是否闰年
      *
      * @param date Date类型时间
+     *
      * @return {@code true}: 闰年<br>{@code false}: 平年
      */
     public static boolean isLeapYear(Date date) {
@@ -828,6 +924,7 @@ public class TimeUtils {
      * 判断是否闰年
      *
      * @param millis 毫秒时间戳
+     *
      * @return {@code true}: 闰年<br>{@code false}: 平年
      */
     public static boolean isLeapYear(long millis) {
@@ -838,6 +935,7 @@ public class TimeUtils {
      * 判断是否闰年
      *
      * @param year 年份
+     *
      * @return {@code true}: 闰年<br>{@code false}: 平年
      */
     public static boolean isLeapYear(int year) {
@@ -849,6 +947,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return 星期
      */
     public static String getWeek(String time) {
@@ -861,6 +960,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return 星期
      */
     public static String getWeek(String time, String pattern) {
@@ -871,6 +971,7 @@ public class TimeUtils {
      * 获取星期
      *
      * @param date Date类型时间
+     *
      * @return 星期
      */
     public static String getWeek(Date date) {
@@ -881,6 +982,7 @@ public class TimeUtils {
      * 获取星期
      *
      * @param millis 毫秒时间戳
+     *
      * @return 星期
      */
     public static String getWeek(long millis) {
@@ -893,6 +995,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return 1...5
      */
     public static int getWeekIndex(String time) {
@@ -906,6 +1009,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return 1...7
      */
     public static int getWeekIndex(String time, String pattern) {
@@ -917,6 +1021,7 @@ public class TimeUtils {
      * <p>注意：周日的Index才是1，周六为7</p>
      *
      * @param date Date类型时间
+     *
      * @return 1...7
      */
     public static int getWeekIndex(Date date) {
@@ -930,6 +1035,7 @@ public class TimeUtils {
      * <p>注意：周日的Index才是1，周六为7</p>
      *
      * @param millis 毫秒时间戳
+     *
      * @return 1...7
      */
     public static int getWeekIndex(long millis) {
@@ -942,6 +1048,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return 1...5
      */
     public static int getWeekOfMonth(String time) {
@@ -955,6 +1062,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return 1...5
      */
     public static int getWeekOfMonth(String time, String pattern) {
@@ -966,6 +1074,7 @@ public class TimeUtils {
      * <p>注意：国外周日才是新的一周的开始</p>
      *
      * @param date Date类型时间
+     *
      * @return 1...5
      */
     public static int getWeekOfMonth(Date date) {
@@ -979,6 +1088,7 @@ public class TimeUtils {
      * <p>注意：国外周日才是新的一周的开始</p>
      *
      * @param millis 毫秒时间戳
+     *
      * @return 1...5
      */
     public static int getWeekOfMonth(long millis) {
@@ -991,6 +1101,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return 1...54
      */
     public static int getWeekOfYear(String time) {
@@ -1004,6 +1115,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return 1...54
      */
     public static int getWeekOfYear(String time, String pattern) {
@@ -1015,6 +1127,7 @@ public class TimeUtils {
      * <p>注意：国外周日才是新的一周的开始</p>
      *
      * @param date Date类型时间
+     *
      * @return 1...54
      */
     public static int getWeekOfYear(Date date) {
@@ -1028,6 +1141,7 @@ public class TimeUtils {
      * <p>注意：国外周日才是新的一周的开始</p>
      *
      * @param millis 毫秒时间戳
+     *
      * @return 1...54
      */
     public static int getWeekOfYear(long millis) {
@@ -1041,6 +1155,7 @@ public class TimeUtils {
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return 生肖
      */
     public static String getChineseZodiac(String time) {
@@ -1053,6 +1168,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return 生肖
      */
     public static String getChineseZodiac(String time, String pattern) {
@@ -1063,6 +1179,7 @@ public class TimeUtils {
      * 获取生肖
      *
      * @param date Date类型时间
+     *
      * @return 生肖
      */
     public static String getChineseZodiac(Date date) {
@@ -1075,6 +1192,7 @@ public class TimeUtils {
      * 获取生肖
      *
      * @param millis 毫秒时间戳
+     *
      * @return 生肖
      */
     public static String getChineseZodiac(long millis) {
@@ -1085,20 +1203,22 @@ public class TimeUtils {
      * 获取生肖
      *
      * @param year 年
+     *
      * @return 生肖
      */
     public static String getChineseZodiac(int year) {
         return CHINESE_ZODIAC[year % 12];
     }
 
-    private static final String[] ZODIAC       = {"水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "魔羯座"};
-    private static final int[]    ZODIAC_FLAGS = {20, 19, 21, 21, 21, 22, 23, 23, 23, 24, 23, 22};
+    private static final String[] ZODIAC = {"水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "魔羯座"};
+    private static final int[] ZODIAC_FLAGS = {20, 19, 21, 21, 21, 22, 23, 23, 23, 24, 23, 22};
 
     /**
      * 获取星座
      * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
      *
      * @param time 时间字符串
+     *
      * @return 生肖
      */
     public static String getZodiac(String time) {
@@ -1111,6 +1231,7 @@ public class TimeUtils {
      *
      * @param time    时间字符串
      * @param pattern 时间格式
+     *
      * @return 生肖
      */
     public static String getZodiac(String time, String pattern) {
@@ -1121,6 +1242,7 @@ public class TimeUtils {
      * 获取星座
      *
      * @param date Date类型时间
+     *
      * @return 星座
      */
     public static String getZodiac(Date date) {
@@ -1135,6 +1257,7 @@ public class TimeUtils {
      * 获取星座
      *
      * @param millis 毫秒时间戳
+     *
      * @return 星座
      */
     public static String getZodiac(long millis) {
@@ -1146,6 +1269,7 @@ public class TimeUtils {
      *
      * @param month 月
      * @param day   日
+     *
      * @return 星座
      */
     public static String getZodiac(int month, int day) {
