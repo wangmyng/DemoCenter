@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.wangmyng.democenter.R;
 
+import java.lang.ref.WeakReference;
+
 
 /**
  * @author wangmyng
@@ -41,6 +43,7 @@ import com.wangmyng.democenter.R;
  */
 public class TopRightListPopupWindow extends PopupWindow {
     private boolean hasInit;
+    private WeakReference<Activity> activityReference;
     private Activity activity;
     private float alpha = 0.7f;
     private AdapterView.OnItemClickListener listener;
@@ -50,7 +53,8 @@ public class TopRightListPopupWindow extends PopupWindow {
 
     public TopRightListPopupWindow(Activity activity) {
         super(activity);
-        this.activity = activity;
+        activityReference = new WeakReference<>(activity);
+        activity = activityReference.get();
     }
 
     private void initView() {
