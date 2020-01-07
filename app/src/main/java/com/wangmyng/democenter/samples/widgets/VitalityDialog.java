@@ -19,7 +19,54 @@ import android.widget.TextView;
 
 import com.wangmyng.democenter.R;
 
-
+/**
+ * @author wangmyng
+ * date 2020/1/1
+ *
+ * 整合几个不同布局的dialog
+ *
+ *
+ * demo：
+ *
+ *     * @param content  弹窗内容
+ *     * @param listener 居中按钮的监听，没按钮传空
+ *     public static void showOpenRedDialog(Context context, String content, @Nullable View.OnClickListener listener) {
+ *         new VitalityDialog.Builder().setContext(context).setContent(content)
+ *                 .setDialogType(listener == null ? VitalityDialog.TYPE_OPEN_RED_0_BUTTON : VitalityDialog.TYPE_OPEN_RED_1_BUTTON)
+ *                 .setOnCenterButtonClickListener(listener).build().show();
+ *     }
+ *
+ *
+ *    * @param content            弹窗内容
+ *    * @param onClickListener    居中按钮的监听，没按钮传空
+ *    * @param onSelectedListener 选择按钮的监听，没按钮传空
+ *
+ *    public static void showGetPrizeDialog(Context context, String content, @Nullable View.OnClickListener onClickListener, @Nullable VitalityDialog.OnSelectedListener onSelectedListener) {
+ *         int type = VitalityDialog.TYPE_GET_PRIZE_0_BUTTON;
+ *         if (onClickListener != null) type = VitalityDialog.TYPE_GET_PRIZE_1_BUTTON;
+ *         if (onSelectedListener != null) type = VitalityDialog.TYPE_GET_PRIZE_2_BUTTON;
+ *         new VitalityDialog.Builder().setContext(context).setDialogType(type).setContent(content)
+ *                 .setOnCenterButtonClickListener(onClickListener)
+ *                 .setOnSelectedListener(onSelectedListener)
+ *                 .build().show();
+ *     }
+ *
+ *
+ *     * @param title1   第一个标题
+ *     * @param title2   第二个标题
+ *     * @param content1 第一部分内容
+ *     * @param content2 第二部分内容
+ *     * @param listener 居中按钮的监听
+ *
+ *     public static void showRulesDialog(Context context, String title1, String title2, String content1, String content2, View.OnClickListener listener) {
+ *         new VitalityDialog.Builder().setContext(context)
+ *                 .setDialogType(VitalityDialog.TYPE_RULES)
+ *                 .setTitle(title1).setTitle2(title2).setContent(content1).setContent2(content2)
+ *                 .setOnCenterButtonClickListener(listener)
+ *                 .build().show();
+ *     }
+ *
+ */
 public class VitalityDialog extends Dialog implements View.OnClickListener {
 
     private TextView tvTitle1;

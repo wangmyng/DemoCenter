@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".samples.customs.CustomTestActivity">
+    android:id="@+id/layout_root"
+    tools:context=".samples.CustomTestActivity">
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/right_icon"
+        android:background="#80ffffff"/>
 
     <com.wangmyng.democenter.samples.customs.StaticProgressRingView
         android:id="@+id/ring"
